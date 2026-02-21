@@ -3,7 +3,7 @@
 // Hugging Face FLUX API (lokal test)
 // ============================================================
 
-const HF_TOKEN = "hf_YEhf_jzHwvwKJBvIIOMUryyyQuHsHAmIInKbyBU"; // <-- buraya yapıştır
+const HF_TOKEN = ""; 
 
 let state = {
   patternType: "solid",
