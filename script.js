@@ -200,7 +200,24 @@ function adjustZoom(delta) {
 
 function applyZoom() {
   const scale = state.zoom / 100;
-  document.getElementById("canvas-wrapper").style.transform = `scale(${scale})`;
+  const wrapper = document.getElementById("canvas-wrapper");
+  const canvas = document.getElementById("fabric-canvas");
+
+  if (isMobile()) {
+    // Mobilde transform kullanma — layout kayıyor.
+    // Canvas CSS display boyutunu direkt değiştir.
+    // Pixel çözünürlüğü (700x700) bozulmaz.
+    const displaySize = Math.round(700 * scale);
+    canvas.style.width = displaySize + "px";
+    canvas.style.height = displaySize + "px";
+    wrapper.style.width = displaySize + "px";
+    wrapper.style.transform = "";
+  } else {
+    canvas.style.width = "";
+    canvas.style.height = "";
+    wrapper.style.width = "";
+    wrapper.style.transform = `scale(${scale})`;
+  }
 }
 
 function drawCanvas() {
