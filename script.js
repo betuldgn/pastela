@@ -13,9 +13,9 @@ let state = {
 };
 
 const PALETTE = [
-  "#F5DDD8","#E8836A","#8DBFAD","#8FBCD4",
-  "#E8C49A","#B8A898","#A8C4D4","#D4BC8E",
-  "#C4B0C4","#A8C4A8","#FFFFFF","#2D2A26",
+  "#F5E6E0","#E8A598","#B8D4C8","#A8C5D8",
+  "#F0D9C8","#D4C5B8","#C8D4D8","#E8D8C8",
+  "#D8C8D4","#C8D8C8","#FFFFFF","#2D2A26",
 ];
 
 function buildFabricPrompt(userPrompt) {
