@@ -499,10 +499,8 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
   }
-  /* canvas-wrapper transform'ına dokunmuyoruz — applyZoom() çalışsın */
   #canvas-wrapper {
-    /* transform-origin merkez olsun ki küçülünce ortalansın */
-    transform-origin: top center;
+    /* JS applyZoom() CSS width/height ile boyutlandırır, transform yok */
     margin: 0 auto;
   }
   .canvas-label-right {
