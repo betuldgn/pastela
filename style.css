@@ -493,13 +493,17 @@ body {
   }
   #canvas-area {
     padding: 20px 16px 32px;
+    /* Zoom büyütünce canvas taşabilir, scroll ile görüntülensin */
+    overflow: auto;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
+  /* canvas-wrapper transform'ına dokunmuyoruz — applyZoom() çalışsın */
   #canvas-wrapper {
-    transform: none !important;
-  }
-  #fabric-canvas {
-    width: 100% !important;
-    height: auto !important;
+    /* transform-origin merkez olsun ki küçülünce ortalansın */
+    transform-origin: top center;
+    margin: 0 auto;
   }
   .canvas-label-right {
     display: none;
