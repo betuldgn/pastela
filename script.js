@@ -31,7 +31,27 @@ function buildFabricPrompt(userPrompt) {
   return `${userPrompt}, seamless fabric pattern, textile design, flat lay, repeating motif, high quality, professional textile print, tileable`;
 }
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+function calcMobileZoom() {
+  // canvas 700px geniş; ekran genişliğine (padding çıkarılmış) sığacak şekilde zoom hesapla
+  const availableWidth = window.innerWidth - 32; // 16px padding her iki yan
+  const zoom = Math.floor((availableWidth / 700) * 100);
+  return Math.min(75, Math.max(25, zoom)); // 25-75 arasında sınırla
+}
+
 function init() {
+  // Mobilse başlangıç zoom'unu ekrana göre ayarla
+  if (isMobile()) {
+    const mobileZoom = calcMobileZoom();
+    state.zoom = mobileZoom;
+    const zoomEl = document.getElementById("canvas-zoom");
+    zoomEl.value = mobileZoom;
+    document.getElementById("zoom-val").textContent = mobileZoom;
+  }
+
   buildSwatches("bg-color-grid", PALETTE, (c) => setBgColor(c), state.bgColor);
   buildSwatches(
     "pat-color-grid",
@@ -41,7 +61,7 @@ function init() {
   );
 
   updateSliderTrack(document.getElementById("pattern-scale"), 90, 300);
-  updateSliderTrack(document.getElementById("canvas-zoom"), 75, 200);
+  updateSliderTrack(document.getElementById("canvas-zoom"), state.zoom, 200);
 
   document.getElementById("pattern-color-section").classList.add("ctrl-hidden");
   document.getElementById("pattern-scale-section").classList.add("ctrl-hidden");
